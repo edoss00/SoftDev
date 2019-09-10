@@ -10,4 +10,5 @@ print(dict1)
 
 if (x == 0):
     randS = random.randint(0,5)
+    print(dict1.get('A',randS))
     
