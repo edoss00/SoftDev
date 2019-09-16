@@ -1,3 +1,6 @@
+#import package
+import random
+
 #opening file
 f = open("occupations.csv","r")
 
@@ -18,3 +21,12 @@ for a in fNewList[1:-2]:
     occupations[float(a[1])] = a[0]
 
 print(occupations)
+
+randNum = random.randint(0,998) / 10.0
+print(randNum)
+iterator = 0
+while (randNum > 0):
+    randNum = randNum - fNewList[iterator][0]
+    iterator += 1
+print(fNewList[iterator][1])
+
