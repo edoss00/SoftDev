@@ -1,3 +1,8 @@
+#Elizabeth Doss
+#SoftDev1 pd1
+#K6 -- StI/O: Divine your Destiny!
+#2019-09-17
+
 import random
 
 #opening file
@@ -14,25 +19,25 @@ fNewList = []
 for s in fList:
     fNewList.append(s.rsplit(',',1))
 
+#parsed list to remove header and total
+fNewList = fNewList[1:-2]
+
+
 #added key value pairs to dictionary
 occupations = {}
-fNewList = fNewList[1:-2]
 for a in fNewList:
-    occupations[float(a[1])] = a[0]
+    occupations[a[0]] = float(a[1])
 
 print(occupations)
 
-#generate random number
-randNum = random.randint(0,998) / 10.0
-print(randNum)
+#random occupation generator function
+def randomOcc():
+    r = random.randint(1, 998) / 10.0
+    for s in fNewList:
+        r -= float(s[1])
+        if (r <= 0):
+            return s[0]
 
-#iterate and subtract through list until number is less than or equal to 0
-iterator = 0
-subtracter = randNum
-while (subtracter > 0):
-    item = float(fNewList[iterator][1])
-    subtracter = subtracter - item
-    iterator += 1
-
-#print result
-print(fNewList[iterator-1][0])
+#tests
+for x in range(20):
+    print(randomOcc())
