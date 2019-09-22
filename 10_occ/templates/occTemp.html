@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+      <title> {{ title }} </title>
+  </head>
+  <body>
+    <h1>Team Me, Myself, and I (plus help from other teams) -- Elizabeth Doss</h1>
+    <p>
+    Special thanks to Amber, Mandy, Morty, and Jackie whose repos I checked out for code I was absent for and Emory for LCT!
+    </p>
+    <br>
+    This is a list of occupations from an occupations csv file and their respective percentages of workers. The top of the list shows a randomly generated occupation from this list chosen based on its percentage.
+    <br><br>
+    Try reloading the page!
+    <br>
+    <h3> Randomly generated occupation: {{ randOcc }} </h3>
+    <br>
+    {% for key in collection %}
+      {{ key }}, {{ collection[key] }}
+      <br>
+    {% endfor %}
+  </body>
+</html>
