@@ -3,12 +3,21 @@
 <html>
   <head>
       <title> {{ title }} </title>
+      <style>
+      table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+          }
+      th, td {
+          padding: 5px;
+          }
+      th {
+          text-align: middle;
+          }
+      </style>
   </head>
   <body>
-    <h1>Team Me, Myself, and I (plus help from other teams) -- Elizabeth Doss</h1>
-    <p>
-    Special thanks to Amber, Mandy, Morty, and Jackie whose repos I checked out for code I was absent for and Emory for LCT!
-    </p>
+    <h1>Team Emoji -- Elizabeth Doss & Hong Wei Chen</h1>
     <br>
     This is a list of occupations from an occupations csv file and their respective percentages of workers. The top of the list shows a randomly generated occupation from this list chosen based on its percentage.
     <br><br>
@@ -16,9 +25,17 @@
     <br>
     <h3> Randomly generated occupation: {{ randOcc }} </h3>
     <br>
-    {% for key in collection %}
-      {{ key }}, {{ collection[key] }}
-      <br>
-    {% endfor %}
+    <table>
+        <tr>
+            <th> Occupation </th>
+            <th> Percentage </th>
+        </tr>
+        {% for item in collection %}
+            <tr>
+                <td>{{item}}</td>
+                <td>{{collection[item]}}</td>
+            </tr>
+        {% endfor %}      
+    </table>
   </body>
 </html>

@@ -45,7 +45,7 @@ def occs_template():
     return render_template('occTemp.html',
                            title = 'Occupations', #template title
                            randOcc = randomOcc(), #randomly choose a job
-                           collection = occupations #creates list of occupations
+                           collection = occupations #creates dict of occupations
                            )
 
 if __name__ == "__main__":
