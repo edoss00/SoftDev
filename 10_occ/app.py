@@ -16,15 +16,18 @@ def helloWorld():
 import random
 
 occupations = {}
+links = {}
 f = open("occupations.csv","r")
 fString = f.readlines()
 #print(fString)
 fString = fString[1:len(fString) - 1]
 for s in fString:
-        fList = s.rsplit(",",1)
+        fList = s.rsplit(",",4)
         fList[1] = fList[1].strip("\n")
         fList[0] = fList[0].replace('"', '')
         occupations[fList[0]] = float(fList[1])
+        links[fList[0]] = fList[2]
+#print(links)
 #print(occupations)
 fNewList = []
 for keys,values in occupations.items():
@@ -45,7 +48,9 @@ def occs_template():
     return render_template('occTemp.html',
                            title = 'Occupations', #template title
                            randOcc = randomOcc(), #randomly choose a job
-                           collection = occupations #creates dict of occupations
+                           occLinks = links,
+                           collection = occupations #creates dict of occupations and percentages
+                           #creates dict of occupations and links
                            )
 
 if __name__ == "__main__":

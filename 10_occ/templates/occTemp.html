@@ -29,10 +29,11 @@
         <tr>
             <th> Occupation </th>
             <th> Percentage </th>
+            <th> Link </th>
         </tr>
         {% for item in collection %}
             <tr>
-                <td>{{item}}</td>
+                <td><a href={{occLinks[item]}}>{{item}}</a></td>
                 <td>{{collection[item]}}</td>
             </tr>
         {% endfor %}      
