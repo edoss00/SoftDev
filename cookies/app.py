@@ -15,7 +15,7 @@ def hello_world():
     return render_template("form.html") #uses template form.html
 
 #follows app route upon pressing submit
-@app.route("/auth")
+@app.route("/auth", methods=["POST"])
 def authPage():
     username = request.args["username"] #stores inputted username
     request_method = request.method #stores the method by which requests are made (always GET)
