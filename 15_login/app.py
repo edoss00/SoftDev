@@ -3,7 +3,7 @@
 #K15 -- ?
 #2019-10-02
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 head = """
@@ -15,6 +15,7 @@ K15 -- ?
 
 @app.route("/")
 def form():
+    print("whyyy")
     return render_template("temp.html",
                                header = head)
 userN = "mykolyk"
@@ -24,6 +25,16 @@ user = []
 
 @app.route("/auth")
 def authenticate():
+    print("whyyyyyyy")
+    print(url_for('form'))
+    print(url_for('authenticate'))
+    #print(user)
+    user.pop()
+    user.pop()
+    return redirect(url_for("form"))
+
+@app.route("/disp_login")
+def login():
     user.append(request.args['username'])
     user.append(request.args['password'])
     print(user)
@@ -37,14 +48,6 @@ def authenticate():
         return render_template("authTempError.html",
                                 username = request.args['username'],
                                 password = request.args['password'])
-    
-@app.route('/logout')
-def log_out():
-    button = request.args['LogOut']
-    if button == 'logout':
-        user.pop()
-        user.pop()
-    return redirect('http://127.0.0.1:5000')
 
 
 if __name__ == "__main__":
