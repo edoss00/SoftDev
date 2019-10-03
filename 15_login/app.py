@@ -29,8 +29,7 @@ def authenticate():
     print(url_for('form'))
     print(url_for('authenticate'))
     #print(user)
-    user.pop()
-    user.pop()
+    user = []
     return redirect(url_for("form"))
 
 @app.route("/disp_login")
