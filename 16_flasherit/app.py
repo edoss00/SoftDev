@@ -1,6 +1,6 @@
 #Elizabeth Doss
 #SoftDev1 pd1
-#K15 -- ?
+#K16 -- Oh yes, perhaps I do...
 #2019-10-03
 
 from flask import Flask, render_template, request, redirect, url_for, session
@@ -9,7 +9,7 @@ app = Flask(__name__)
 head = """
 Emory Walsh & Elizabeth Doss -- Flower Power
 SoftDev1 pd1
-K15 -- ?
+K16 --  Oh yes, perhaps I do…
 2019-10-03
 """
 
@@ -24,8 +24,8 @@ loggedIn = False
 #root
 @app.route("/")
 def homepage():
-    print("/")
-    print(session)
+    #print("/")
+    #print(session)
     #if 'user' in session:
     if loggedIn == True:
         return redirect("/welcome")
@@ -35,13 +35,13 @@ def homepage():
 #welcome if logged in
 @app.route("/welcome")
 def hi():
-    print("/welcome")
+    #print("/welcome")
     return render_template("welcomeTemp.html")
 
 #tell that logged out
 @app.route("/loggedout")
 def logout():
-    print("/loggedout")
+    #print("/loggedout")
     loggedIn = False
     session.pop('user')
     session.pop('pass')
@@ -51,7 +51,7 @@ def logout():
 #decides if correct credentials
 @app.route("/auth")
 def authenticate():
-    print("/auth")
+    #print("/auth")
     session['user'] = request.args['username']
     session['pass'] = request.args['password']
     if (session['user'] == userN and session['pass'] == passW) :
@@ -63,7 +63,7 @@ def authenticate():
 
 @app.route("/error")
 def errorPath():
-    print("/error")
+    #print("/error")
     if (userN != session['user']):
         session.pop("user")
         session.pop("pass")
