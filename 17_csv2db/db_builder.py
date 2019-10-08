@@ -17,13 +17,23 @@ c = db.cursor()               #facilitate db ops
 # < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
 
 
-command = "CREATE TABLE IF NOT EXISTS classData (name TEXT, mark INTEGER, id INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
+command = "CREATE TABLE IF NOT EXISTS classData (courses TEXT, mark INTEGER, id INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
 c.execute(command)    # run SQL statement
 
 with open('courses.csv', newline='') as csvfile:
      reader = csv.DictReader(csvfile)
      for row in reader:
          command = "INSERT INTO classData VALUES(\"" + row['code'] + "\"," + row['mark'] + "," + row['id'] + ")"
+         print(command)
+         c.execute(command)
+
+command = "CREATE TABLE IF NOT EXISTS studentData (name TEXT, age INTEGER, id INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
+c.execute(command)    # run SQL statement
+
+with open("students.csv", newline='') as csvfile:
+     reader = csv.DictReader(csvfile)
+     for row in reader:
+         command = "INSERT INTO studentData VALUES(\"" + row['name'] + "\"," + row['age'] + "," + row['id'] + ")"
          print(command)
          c.execute(command)
 
