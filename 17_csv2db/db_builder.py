@@ -23,11 +23,11 @@ c.execute(command)    # run SQL statement
 with open('courses.csv', newline='') as csvfile:
      reader = csv.DictReader(csvfile)
      for row in reader:
-         command = "INSERT INTO classData VALUES(" + row['code'] + "," + row['mark'] + "," + row['id'] + ")"
+         command = "INSERT INTO classData VALUES(\"" + row['code'] + "\"," + row['mark'] + "," + row['id'] + ")"
          print(command)
          c.execute(command)
-      
-#==========================================================
+
+      #==========================================================
 
 db.commit() #save changes
 db.close()  #close database
