@@ -1,7 +1,7 @@
-#Clyde "Thluffy" Sinclair
-#SoftDev  
-#skeleton :: SQLITE3 BASICS
-#Oct 2019
+#Elizabeth Doss
+#SoftDev 1 pd1 
+#K17 -- No Trouble
+#2019-10-9
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitate CSV I/O
@@ -13,31 +13,37 @@ db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
 #==========================================================
-
-# < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
-
-
 command = "CREATE TABLE IF NOT EXISTS classData (courses TEXT, mark INTEGER, id INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
 c.execute(command)    # run SQL statement
 
+#creates table for courses
 with open('courses.csv', newline='') as csvfile:
      reader = csv.DictReader(csvfile)
      for row in reader:
          command = "INSERT INTO classData VALUES(\"" + row['code'] + "\"," + row['mark'] + "," + row['id'] + ")"
-         print(command)
+         #print(command)
          c.execute(command)
 
 command = "CREATE TABLE IF NOT EXISTS studentData (name TEXT, age INTEGER, id INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
 c.execute(command)    # run SQL statement
 
+#creates table for students
 with open("students.csv", newline='') as csvfile:
      reader = csv.DictReader(csvfile)
      for row in reader:
+         print(row)
          command = "INSERT INTO studentData VALUES(\"" + row['name'] + "\"," + row['age'] + "," + row['id'] + ")"
-         print(command)
+         #print(command)
          c.execute(command)
 
-      #==========================================================
+#==========================================================
 
 db.commit() #save changes
 db.close()  #close database
+
+
+#use .header on
+#use .mode columns, csv, list, html, insert, live, tabs
+
+
+
