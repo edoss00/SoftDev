@@ -24,6 +24,23 @@ for row in data:
     else:
         id_grades.update({row[1]: id_grades.get(row[1]) + [row[2]]})
 
-#print in columb form
+#print in column form
 for key in id_name:
     print("student: {}\t ID: {}\t AVG: {}".format(id_name.get(key), key, statistics.mean(id_grades.get(key))))
+
+#creates table stu_avg
+command = "CREATE TABLE IF NOT EXISTS stu_avg(id INTEGER, avg INTEGER)"
+c.execute(command)
+
+#print statements to check
+#print(id_name)
+#print(id_grades)
+
+#populates the new table with ids and averages
+for key in id_grades:
+    command = "INSERT INTO stu_avg VALUES(" + str(key) + "," + str(statistics.mean(id_grades.get(key))) +  ")"
+    print(command)
+    c.execute(command)
+
+db.commit() #save changes
+db.close()  #close database
