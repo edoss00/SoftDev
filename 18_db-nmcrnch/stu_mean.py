@@ -1,5 +1,5 @@
-#Elizabeth Doss
-#SoftDev 1 pd1 
+#Elizabeth Doss and Emily Zhang (Team Double E 7)
+#SoftDev1 pd1 
 #K18 -- Average
 #2019-10-14
 
