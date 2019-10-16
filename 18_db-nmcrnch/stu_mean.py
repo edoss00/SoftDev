@@ -27,6 +27,7 @@ for row in data:
 #print in column form
 for key in id_name:
     print("student: {}\t ID: {}\t AVG: {}".format(id_name.get(key), key, statistics.mean(id_grades.get(key))))
+<<<<<<< HEAD
 
 #creates table stu_avg
 command = "CREATE TABLE IF NOT EXISTS stu_avg(id INTEGER, avg INTEGER)"
@@ -44,3 +45,14 @@ for key in id_grades:
 
 db.commit() #save changes
 db.close()  #close database
+=======
+####################################
+command = "CREATE TABLE IF NOT EXISTS stu_avg (id INTEGER, avg INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
+c.execute(command)    # run SQL statement
+
+print(id_name)
+#creates table for avgs
+for key in id_grades:
+    command = "INSERT INTO stu_avg VALUES(\"" + key + "\"," + id_grades.get(key) + ")"
+    c.execute(command)
+>>>>>>> 2e7cd37280cb9386cf17d8d04d218fc5ea42bbd0
