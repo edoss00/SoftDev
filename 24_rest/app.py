@@ -5,23 +5,22 @@
 
 #prepares flask
 from flask import Flask, render_template, request
-#import urllib
 from urllib.request import urlopen
+import json
 
 app = Flask(__name__) #create instance of class Flask
-
-def getStars():
-    data = urlopen("https://api.nasa.gov/planetary/apod?api_key=kmnrWrniE29xLftxSwJQs8PdYbMRMPvIMGQn7ZIh")
-    pic = data.read()
-    return pic
-
-
 
 #normal route
 @app.route("/") #assign following fxn to run when root route requested
 def stars():
+    url = urlopen("https://api.nasa.gov/planetary/apod?api_key=75pcuZwFaaKindhBtxeK4vfGqbEVbgzRQbZU5g4s")
+    data = url.read() #turns api data into a dictionary
+    dict = json.loads(data)
+    pic = dict["url"]
+    expl = dict["explanation"]
     return render_template("nasa.html",
-                           pic = getStars())
+                           pic = pic,
+                           expl = expl)
 
 #main
 if __name__ == "__main__":
