@@ -41,12 +41,14 @@ var factButton = () => {
     n = factBut.getAttribute('val');
     h = document.getElementById('faDisplay');
     h.innerHTML = fact(n);
+    console.log(h.innerHTML)
 };
 
 var fibButton = () => {
     n = fibBut.getAttribute('val');
     h = document.getElementById('fiDisplay');
     h.innerHTML = fibonacci(n);
+    console.log(h.innerHTML)
 };
 
 var gcdButton = () => {
@@ -56,11 +58,13 @@ var gcdButton = () => {
     b = input[1];
     h = document.getElementById('gcdDisplay');
     h.innerHTML = gcd(a,b);
+    console.log(h.innerHTML)
 };
 
 var stuButton = () => {
     h = document.getElementById('stuDisplay');
     h.innerHTML = randomStudent();
+    console.log(h.innerHTML)
 };
 
 //HTML
