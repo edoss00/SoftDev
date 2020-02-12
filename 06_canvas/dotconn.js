@@ -14,6 +14,8 @@ contx.strokeRect(0,0,600,600);
 clearButton.addEventListener('click',clear);
 
 function clear(){
+    x=0;
+    y=0;
     console.log('clear');
     contx.clearRect(0,0,600,600);
     contx.strokeRect(0,0,600,600);
