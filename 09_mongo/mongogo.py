@@ -38,10 +38,10 @@ def find_zip_lograde(z, g):
 find_zip_lograde("10028","B")
 
 # Something more clever.
-#All restaurants beginning with a specified letter.
-def  find_zip_letter(z, l):
-	cursor = restaurants.find({"address.zipcode": z, "name": {"$regex": "/^B/","$options" :'i'}})
+# All restaurants in specified zip code with names containing specified string.
+def  find_zip_letter(z, n):
+	cursor = restaurants.find({"address.zipcode": z, "name": re.compile(n)})
 	for c in cursor:
 		pprint(c)
 
-find_zip_letter("10459","B")
+find_zip_letter("10459","King")
