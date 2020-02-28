@@ -1,5 +1,6 @@
 from pprint import pprint
 from pymongo import MongoClient
+import re
 
 c = MongoClient()
 db = c.test_database
