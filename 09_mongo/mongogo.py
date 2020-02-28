@@ -23,17 +23,17 @@ def find_zip(z):
 
 # All restaurants in a specified zip code and with a specified grade.
 def find_zip_grade(z, g):
-    cursor = restaurants.find({ "address.zipcode": z, "grades.grade": g})
-    for c in cursor:
-	   pprint(c)
+	cursor = restaurants.find({ "address.zipcode": z, "grades.grade": g})
+	for c in cursor:
+		pprint(c)
 
 find_zip_grade("10028","A")
 
 # All restaurants in a specified zip code with a score below a specified threshold.
 def find_zip_lograde(z, g):
-    cursor = restaurants.find({ "address.zipcode": z, "grades.grade": {"$gt":g}})
-    for c in cursor:
-        pprint(c)
+	cursor = restaurants.find({ "address.zipcode": z, "grades.grade": {"$gt":g}})
+	for c in cursor:
+		pprint(c)
 
 find_zip_lograde("10028","B")
 
