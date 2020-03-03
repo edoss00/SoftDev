@@ -1,5 +1,6 @@
 import json
 import csv
+from pprint import pprint
 from pymongo import MongoClient
 from bson.json_util import loads
 
@@ -78,9 +79,12 @@ schools.insert_many(json.loads(data))
 
 #given demographic, cohort year, and cohort category get dropout rate
 def findDropout(year,cat,dem):
-    return db.schools.find({"Cohort Year": year, "Cohort Category": cat, "Demographic": dem},{"% of cohort Dropped Out":1, '_id':0})
+    cursor = db.schools.find({'Demographics': dem})
+    for c in cursor:
+		pprint(c)
+    #return db.schools.find({"Cohort Year": year, "Cohort Category": cat, "Demographic": dem},{"% of cohort Dropped Out":1, '_id':0})
 
-print(findDropout(2001, '4 Year June', 'English Language Learner'))
+findDropout(2001, '4 Year June', 'English Language Learner')
 
 #% of cohort Dropped Out, % of cohort  Advanced Regents, % of cohort Total Grads
 #ELLs w/ dropout rate less than 20%
