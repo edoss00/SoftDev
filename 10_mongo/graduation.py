@@ -10,15 +10,14 @@ with open('grad.csv', 'r') as csvfile:
 with open('grad_results.json','w') as outfile:
     outfile.write(json.dumps(lines))
 
-c = MongoClient()
-db = c.test_database
-schools = db.schools
-schools.drop()
-f = open("grad_results.json","r")
-rString = f.readlines()
-for x in rString:
-    schools.insert_one(loads(x))
-
+client = MongoClient()
+db = client.schools
+db.data.drop()
+data=db.data
+file = open("grad_results.json", "r")
+doc = file.readlines()
+for line in doc:
+    data.insert_one(loads(line))
 
 # {
 #     "address": {
