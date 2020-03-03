@@ -10,14 +10,24 @@ with open('grad.csv', 'r') as csvfile:
 with open('grad_results.json','w') as outfile:
     outfile.write(json.dumps(lines))
 
-client = MongoClient()
-db = client.schools
-db.data.drop()
-data=db.data
-file = open("grad_results.json", "r")
-doc = file.readlines()
-for line in doc:
-    data.insert_one(loads(line))
+data = None
+with open("grad_results.json") as data_file:
+    data = data_file.read().replace("$date", "date")
+
+client = MongoClient('localhost', 27017)  # default mongo port is 27017
+db = client['schools']
+schools = db['schools-collection']
+schools.insert_many(json.loads(data))
+
+
+# client = MongoClient()
+# db = client.schools
+# db.data.drop()
+# data=db.data
+# file = open("grad_results.json", "r")
+# doc = file.readlines()
+# for line in doc:
+#     data.insert_one(loads(line))
 
 # {
 #     "address": {
@@ -69,8 +79,6 @@ for line in doc:
 #given demographic, cohort year, and cohort category get dropout rate
 def findDropout(year,cat,dem):
     return db.schools.find({"Cohort Year": year, "Cohort Category": cat, "Demographic": dem},{"% of cohort Dropped Out":0})
-# def findzipgrade(zipc,grade):
-#     return db.food.find( { "address.zipcode": zipc, "grades.grade": grade },{ "name": 1, "_id":0} )
 
 print(findDropout(2001, '4 Year June', 'English Language Learner'))
 
