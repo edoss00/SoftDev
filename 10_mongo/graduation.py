@@ -84,7 +84,8 @@ def findDropout(year,cat,dem):
         pprint(c)
         #return db.schools.find({"Cohort Year": year, "Cohort Category": cat, "Demographic": dem},{"% of cohort Dropped Out":1, '_id':0})
 
-findDropout(2001, '4 Year June', 'English Language Learner')
+print(3)
+print(findDropout(2001, '4 Year June', 'English Language Learner'))
 
 #% of cohort Dropped Out, % of cohort  Advanced Regents, % of cohort Total Grads
 #ELLs w/ dropout rate less than 20%
