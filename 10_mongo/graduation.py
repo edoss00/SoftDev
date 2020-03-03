@@ -78,7 +78,7 @@ schools.insert_many(json.loads(data))
 
 #given demographic, cohort year, and cohort category get dropout rate
 def findDropout(year,cat,dem):
-    return db.schools.find({"Cohort Year": year, "Cohort Category": cat, "Demographic": dem},{"% of cohort Dropped Out":0})
+    return db.schools.find({"Cohort Year": year, "Cohort Category": cat, "Demographic": dem},{"% of cohort Dropped Out":1, '_id':0})
 
 print(findDropout(2001, '4 Year June', 'English Language Learner'))
 
