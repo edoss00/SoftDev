@@ -14,10 +14,10 @@ c = MongoClient()
 db = c.test_database
 schools = db.schools
 schools.drop()
-f = open("grad_results.json","r")
-rString = f.readlines()
-for x in rString:
-    restaurants.insert_one(loads(x))
+with open('grad_results.json','r') as outfile:
+    rString = f.readlines()
+    for x in rString:
+        schools.insert_one(loads(x))
 
 
 # {
