@@ -1,7 +1,7 @@
 import json
 import csv
 from pymongo import MongoClient
-
+from bson.json_util import loads
 
 with open('grad.csv', 'r') as csvfile:
     reader = csv.DictReader(csvfile)
