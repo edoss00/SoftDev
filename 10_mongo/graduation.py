@@ -81,8 +81,8 @@ schools.insert_many(json.loads(data))
 def findDropout(year,cat,dem):
     cursor = db.schools.find({'Demographics': dem})
     for c in cursor:
-		pprint(c)
-    #return db.schools.find({"Cohort Year": year, "Cohort Category": cat, "Demographic": dem},{"% of cohort Dropped Out":1, '_id':0})
+        pprint(c)
+        #return db.schools.find({"Cohort Year": year, "Cohort Category": cat, "Demographic": dem},{"% of cohort Dropped Out":1, '_id':0})
 
 findDropout(2001, '4 Year June', 'English Language Learner')
 
