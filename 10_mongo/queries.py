@@ -30,7 +30,7 @@ specialdisco = client['schools'].collection
 #     "% of cohort Dropped Out": "30.6"
 # }
 
-def findDrop_yea(year):
+def findDrop_year(year):
     return schools.find(
         {'Cohort Year':str(year)},
         {'% of cohort Dropped Out':1, '_id':0}
@@ -54,6 +54,6 @@ def print_results(results):
     for result in results:
         pprint(result)
 
-
-print_results(find_year_cat(2001,'4 Year June'))
-print_results(find_year_cat(2001,'4 Year June'))
+print_results(findDrop_year(2001))
+print_results(findDrop_year_cat(2001,'4 Year June'))
+print_results(findDrop_year_dem(2001,'Male'))
