@@ -51,6 +51,22 @@ def findDrop_year_cat(year,cat):
         {'% of cohort Dropped Out':1, '_id':0}
     )
 
+def findDrop_dem(dem,min):
+    return schools.find(
+        {'Demographic': dem,
+         '% of cohort Dropped Out': {'$gt': min}},
+        {'Cohort Year':1, '_id':0}
+    )
+
+def find_zip_lograde(z, g):
+	cursor = restaurants.find({ "address.zipcode": z, "grades.grade": {"$gt":g}})
+	for c in cursor:
+		pprint(c)
+
+
+
+
+
 #Advanced Regents
 def findAdReg_year(year):
     return schools.find(
@@ -83,6 +99,10 @@ print('Drop Out in 2009 for 6 Year')
 print_results(findDrop_year_cat(2009,'6 Year'))
 print('Drop Out in 2006 for Male')
 print_results(findDrop_year_dem(2001,'Male'))
+
+print('Year for Male > 10')
+print_results(findDrop_dem('Male', 10))
+
 
 print('Advanced Regents in 2011')
 print_results(findAdReg_year(2011))
