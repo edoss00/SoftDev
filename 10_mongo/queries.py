@@ -1,3 +1,4 @@
+# "python3 db_init.py -i" in command line to run
 
 from pprint import pprint
 from pymongo import MongoClient
@@ -29,9 +30,10 @@ schools = client['schools'].collection
 #     "% of cohort Dropped Out": "30.6"
 # }
 
-def find_year(year):
+def find_year(year,dem):
     return schools.find(
-        {'Cohort Year':str(year)},
+        {'Cohort Year':str(year),
+         'Demographic': dem},
         {'% of cohort Dropped Out':1, '_id':0}
     )
 
@@ -39,4 +41,4 @@ def print_results(results):
     for result in results:
         pprint(result)
 
-print_results(find_year(2001))
+print_results(find_year(2001,'English Language Learner'))
