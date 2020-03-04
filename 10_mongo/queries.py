@@ -56,6 +56,6 @@ def print_results(results):
 print('Drop Out in 2001')
 print_results(findDrop_year(2001))
 print('Drop Out in 2001 for 4 Year June')
-print_results(findDrop_year_cat(2001,'4 Year June'))
+print_results(findDrop_year_cat(2001,'4 Year  June'))
 print('Drop Out in 2001 for Male')
 print_results(findDrop_year_dem(2001,'Male'))
