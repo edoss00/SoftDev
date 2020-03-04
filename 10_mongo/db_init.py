@@ -1,9 +1,28 @@
+#Elizabeth Doss & Yevgeniy Gorbachev (Team Special Disco)
+#SoftDev1 pd1
+#K10 -- Import/Export Bank
+#2020-02-28
+/*
+The original data online was provided in a csv file that we converted
+to a JSON file. Here is a link to the download page of the csv:
+https://catalog.data.gov/dataset/regents-exam-results
+
+There is a JSON file available on this page, but it contains a file
+that is not easily searchable, so we made our own!
+
+This file generates a JSON file and creates a new db used in queries.property
+If the JSON does not need to be generated, the user is informed using
+main() of what steps to follow
+If the json file is already initialized, run "python3 db_init.py -i"
+in command line, else run "python3 db_init.py"
+
+See queries.py for more
+*/
+
 import json
 import sys
 from pprint import pprint
 from pymongo import MongoClient
-
-
 
 client = MongoClient('localhost', 27017)  # default mongo port is 27017
 schools = client['specialdisco'].collection
