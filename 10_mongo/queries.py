@@ -30,6 +30,7 @@ schools = client['specialdisco'].collection
 #     "% of cohort Dropped Out": "30.6"
 # }
 
+# Dropout Rates
 def findDrop_year(year):
     return schools.find(
         {'Cohort Year':str(year)},
@@ -50,12 +51,42 @@ def findDrop_year_cat(year,cat):
         {'% of cohort Dropped Out':1, '_id':0}
     )
 
+#Advanced Regents
+def findAdReg_year(year):
+    return schools.find(
+        {'Cohort Year':str(year)},
+        {'% of cohort  Advanced Regents':1, '_id':0}
+    )
+
+def findAdReg_year_dem(year,dem):
+    return schools.find(
+        {'Cohort Year':str(year),
+         'Demographic': dem},
+        {'% of cohort  Advanced Regents':1, '_id':0}
+    )
+
+def findAdReg_year_cat(year,cat):
+    return schools.find(
+        {'Cohort Year':str(year),
+         'Cohort Category': cat},
+        {'% of cohort  Advanced Regents':1, '_id':0}
+    )
+
+
 def print_results(results):
     for result in results:
         pprint(result)
+
 print('Drop Out in 2001')
 print_results(findDrop_year(2001))
-print('Drop Out in 2001 for 4 Year June')
-print_results(findDrop_year_cat(2001,'5 Year'))
-print('Drop Out in 2001 for Male')
+print('Drop Out in 2009 for 6 Year')
+print_results(findDrop_year_cat(2009,'6 Year'))
+print('Drop Out in 2006 for Male')
 print_results(findDrop_year_dem(2001,'Male'))
+
+print('Advanced Regents in 2011')
+print_results(findAdReg_year(2011))
+print('Advanced Regents in 2001 for 5 Year August')
+print_results(findAdReg_year_cat(2009,'5 Year August'))
+print('Advanced Regents in 2003 for Hispanic')
+print_results(findAdReg_year_dem(2001,'Hispanic'))
