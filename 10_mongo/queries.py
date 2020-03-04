@@ -3,7 +3,7 @@
 from pprint import pprint
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)  # default mongo port is 27017
-specialdisco = client['schools'].collection
+schools = client['specialdisco'].collection
 
 # {
 #     "Cohort Year": "2001",

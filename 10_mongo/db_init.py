@@ -6,7 +6,7 @@ from pymongo import MongoClient
 
 
 client = MongoClient('localhost', 27017)  # default mongo port is 27017
-specialdisco = client['schools'].collection
+schools = client['specialdisco'].collection
 
 def generate_json(csvpath, outpath):
     '''uses the given csv file path to generate corresponding json'''
@@ -20,15 +20,15 @@ def generate_json(csvpath, outpath):
         outfile.write(json.dumps(lines))
 
 def insert_db(jsonpath):
-    '''inserts contents of jsonpath into specialdisco.schools.collection'''
+    '''inserts contents of jsonpath into db.specialdisco.collection'''
     from bson.json_util import loads as bson_loads
 
     with open(jsonpath, 'r') as datafile:
         data = json.loads(datafile.read())
-    specialdisco.drop()
+    schools.drop()
     for record in data:
         # data is a dict - must be re-strung, then inserted as bson
-        result = specialdisco.insert_one(bson_loads(json.dumps(record)))
+        result = schools.insert_one(bson_loads(json.dumps(record)))
 
 def main(argv = None):
     if not argv:
