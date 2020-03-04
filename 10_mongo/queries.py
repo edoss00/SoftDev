@@ -29,8 +29,14 @@ Sample Data from grad_results.json
      "# Dropped Out": "3220",
      "% of cohort Dropped Out": "30.6"
  }
-"""
 
+When inserting your own values you can use:
+Cohort Year: 2001-2011
+Cohort Category: 4 Year  June, 4 Year August, 5 Year  June, 5 Year August, 6 Year
+Demographic: English Language Learner, English Language Proficient,
+             Not Student with Disability, Student with Disability,
+             Asian, Black, Hispanic, White, Female, Male
+"""
 from pprint import pprint
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)  # default mongo port is 27017
@@ -93,21 +99,21 @@ def print_results(results):
         pprint(result)
 
 ### Drop Out Tests
-print('Drop Out in 2001')
-print_results(findDrop_year(2001))
+# print('Drop Out in 2001')
+# print_results(findDrop_year(2001))
 print('Drop Out in 2009 for 6 Year')
 print_results(findDrop_year_cat(2009,'6 Year'))
-print('Drop Out in 2006 for Male')
-print_results(findDrop_year_dem(2001,'Male'))
-
+# print('Drop Out in 2006 for Male')
+# print_results(findDrop_year_dem(2001,'Male'))
+#
 ### Advanced Regents Tests
-print('Advanced Regents in 2011')
-print_results(findAdReg_year(2011))
-print('Advanced Regents in 2001 for 5 Year August')
-print_results(findAdReg_year_cat(2009,'5 Year August'))
+# print('Advanced Regents in 2011')
+# print_results(findAdReg_year(2011))
+# print('Advanced Regents in 2001 for 5 Year August')
+# print_results(findAdReg_year_cat(2009,'5 Year August'))
 print('Advanced Regents in 2003 for Hispanic')
 print_results(findAdReg_year_dem(2001,'Hispanic'))
-
+#
 ### Mins and Maxs Tests
 print('Year for Black > 10% Dropped Out')
 print_results(findYear_dem_min('Male', 10))
