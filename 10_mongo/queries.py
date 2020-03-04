@@ -82,9 +82,9 @@ def findYear_dem_min(dem,min):
 
 def findDrop_enrollmax(max):
     return schools.find(
-        {'% of cohort Still Enrolled': {'$lt': str(max)},
+        {'% of cohort Still Enrolled': {'$lt': str(max)}},
         {'% of cohort Dropped Out':1, '_id':0}
-    )
+        )
 
 #Print
 def print_results(results):
