@@ -2,7 +2,7 @@
 #SoftDev1 pd1
 #K10 -- Import/Export Bank
 #2020-02-28
-/*
+"""
 The original data online was provided in a csv file that we converted
 to a JSON file. Here is a link to the download page of the csv:
 https://catalog.data.gov/dataset/regents-exam-results
@@ -17,7 +17,7 @@ If the json file is already initialized, run "python3 db_init.py -i"
 in command line, else run "python3 db_init.py"
 
 See queries.py for more
-*/
+"""
 
 import json
 import sys
