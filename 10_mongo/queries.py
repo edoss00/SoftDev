@@ -4,11 +4,6 @@
 #2020-02-28
 
 """
-This dataset contains information about different graduation outcomes
-from 2001-2011. Information includes Cohort Year, Cohort Category,
-Demographic, # and % of grads Advanced Regents, # and % of cohort Still
-Enrolled, # and % of cohort Dropped Out, and much more.
-
 Sample Data from grad_results.json
  {
      "Cohort Year": "2001",
@@ -41,20 +36,18 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)  # default mongo port is 27017
 schools = client['specialdisco'].collection
 
-# Dropout Rates
+### Dropout Rates
 def findDrop_year(year):
     return schools.find(
         {'Cohort Year':str(year)},
         {'% of cohort Dropped Out':1, '_id':0}
     )
-
 def findDrop_year_dem(year,dem):
     return schools.find(
         {'Cohort Year':str(year),
          'Demographic': dem},
         {'% of cohort Dropped Out':1, '_id':0}
     )
-
 def findDrop_year_cat(year,cat):
     return schools.find(
         {'Cohort Year':str(year),
@@ -62,20 +55,18 @@ def findDrop_year_cat(year,cat):
         {'% of cohort Dropped Out':1, '_id':0}
     )
 
-#Advanced Regents
+### Advanced Regents
 def findAdReg_year(year):
     return schools.find(
         {'Cohort Year':str(year)},
         {'% of cohort  Advanced Regents':1, '_id':0}
     )
-
 def findAdReg_year_dem(year,dem):
     return schools.find(
         {'Cohort Year':str(year),
          'Demographic': dem},
         {'% of cohort  Advanced Regents':1, '_id':0}
     )
-
 def findAdReg_year_cat(year,cat):
     return schools.find(
         {'Cohort Year':str(year),
@@ -83,25 +74,25 @@ def findAdReg_year_cat(year,cat):
         {'% of cohort  Advanced Regents':1, '_id':0}
     )
 
-#Mins and Maxs
+### Mins and Maxs
 def findYear_dem_min(dem,min):
     return schools.find(
         {'Demographic': dem,
          '% of cohort Dropped Out': {'$gt': str(min)}},
         {'Cohort Year':1, '_id':0}
     )
-
 def findDrop_enrollmax(max):
     return schools.find(
         {'% of cohort Still Enrolled': {'$lt': str(max)}},
         {'% of cohort Dropped Out':1, '_id':0}
         )
 
-#Print
+### Prints
 def print_results(results):
     for result in results:
         pprint(result)
 
+### Drop Out Tests
 print('Drop Out in 2001')
 print_results(findDrop_year(2001))
 print('Drop Out in 2009 for 6 Year')
@@ -109,6 +100,7 @@ print_results(findDrop_year_cat(2009,'6 Year'))
 print('Drop Out in 2006 for Male')
 print_results(findDrop_year_dem(2001,'Male'))
 
+### Advanced Regents Tests
 print('Advanced Regents in 2011')
 print_results(findAdReg_year(2011))
 print('Advanced Regents in 2001 for 5 Year August')
@@ -116,6 +108,7 @@ print_results(findAdReg_year_cat(2009,'5 Year August'))
 print('Advanced Regents in 2003 for Hispanic')
 print_results(findAdReg_year_dem(2001,'Hispanic'))
 
+### Mins and Maxs Tests
 print('Year for Black > 10% Dropped Out')
 print_results(findYear_dem_min('Male', 10))
 print('Drop Out when Enrollment < 20%')

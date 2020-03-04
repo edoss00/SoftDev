@@ -3,12 +3,20 @@
 #K10 -- Import/Export Bank
 #2020-02-28
 """
-The original data online was provided in a csv file that we converted
-to a JSON file. Here is a link to the download page of the csv:
-https://catalog.data.gov/dataset/regents-exam-results
+2005 - 2015 Graduation Outcomes
+This dataset contains information about different graduation outcomes
+from 2001-2011. Information includes Cohort Year, Cohort Category,
+Demographic, # and % of grads Advanced Regents, # and % of cohort Still
+Enrolled, # and % of cohort Dropped Out, and much more.
 
-There is a JSON file available on this page, but it contains a file
-that is not easily searchable, so we made our own!
+The original data was provided in a csv file that we converted
+to a JSON file. There is a JSON file available on the page, but it
+contains a file that is not easily searchable, so we made our own!
+Here is a link to the general download page:
+(DOWNLOADING THE JSON DIRECTLY WILL NOT WORK)
+https://catalog.data.gov/dataset/regents-exam-results
+Here is the link to the csv download page:
+https://catalog.data.gov/dataset/regents-exam-results/resource/3152fb23-d46a-4805-91a4-62cd096c945b
 
 This file generates a JSON file and creates a new db used in queries.property
 If the JSON does not need to be generated, the user is informed using
@@ -16,7 +24,7 @@ main() of what steps to follow
 If the json file is already initialized, run "python3 db_init.py -i"
 in command line, else run "python3 db_init.py"
 
-See queries.py for more
+See queries.py for sample data and mongo functions
 """
 
 import json
