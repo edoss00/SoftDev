@@ -20,38 +20,7 @@ db = client['schools']
 schools = db['schools-collection']
 schools.insert_many(json.loads(data))
 
-
-# client = MongoClient()
-# db = client.schools
-# db.data.drop()
-# data=db.data
-# file = open("grad_results.json", "r")
-# doc = file.readlines()
-# for line in doc:
-#     data.insert_one(loads(line))
-
-# {
-#     "address": {
-#         "building": "1007",
-#         "coord": [-73.856077, 40.848447],
-#         "street": "Morris Park Ave",
-#         "zipcode": "10462"
-#                 },
-#     "borough": "Bronx",
-#     "cuisine": "Bakery",
-#     "grades": [{"date":
-#                     {"$date": 1393804800000},
-#                     "grade": "A",
-#                     "score": 2},
-#                {"date":
-#                     {"$date": 1378857600000},
-#                     "grade": "A",
-#                     "score": 6},
-#                 ],
-#      "name": "Morris Park Bake Shop",
-#      "restaurant_id": "30075445"
-# }
-#
+#Example
 # {
 #     "Cohort Year": "2001",
 #     "Cohort Category": "4 Year  June",
