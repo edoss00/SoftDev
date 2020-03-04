@@ -51,13 +51,6 @@ def findDrop_year_cat(year,cat):
         {'% of cohort Dropped Out':1, '_id':0}
     )
 
-def findDrop_dem(dem,min):
-    return schools.find(
-        {'Demographic': dem,
-         '% of cohort Dropped Out': {'$gt': str(min)}},
-        {'Cohort Year':1, '_id':0}
-    )
-
 #Advanced Regents
 def findAdReg_year(year):
     return schools.find(
@@ -79,7 +72,21 @@ def findAdReg_year_cat(year,cat):
         {'% of cohort  Advanced Regents':1, '_id':0}
     )
 
+#Mins and Maxs
+def findYear_dem_min(dem,min):
+    return schools.find(
+        {'Demographic': dem,
+         '% of cohort Dropped Out': {'$gt': str(min)}},
+        {'Cohort Year':1, '_id':0}
+    )
 
+def findDrop_enrollmax(max):
+    return schools.find(
+        {'% of cohort Still Enrolled': {'$lt': str(max)},
+        {'% of cohort Dropped Out':1, '_id':0}
+    )
+
+#Print
 def print_results(results):
     for result in results:
         pprint(result)
@@ -91,13 +98,14 @@ print_results(findDrop_year_cat(2009,'6 Year'))
 print('Drop Out in 2006 for Male')
 print_results(findDrop_year_dem(2001,'Male'))
 
-print('Year for Male > 10')
-print_results(findDrop_dem('Male', 10))
-
-
 print('Advanced Regents in 2011')
 print_results(findAdReg_year(2011))
 print('Advanced Regents in 2001 for 5 Year August')
 print_results(findAdReg_year_cat(2009,'5 Year August'))
 print('Advanced Regents in 2003 for Hispanic')
 print_results(findAdReg_year_dem(2001,'Hispanic'))
+
+print('Year for Black > 10% Dropped Out')
+print_results(findYear_dem_min('Male', 10))
+print('Drop Out when Enrollment < 20%')
+print_results(findDrop_enrollmax(20))
