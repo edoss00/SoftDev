@@ -45,9 +45,11 @@ def hello_world():
 
 @app.route('/bigbang')
 def bigbang():
-    season = request.form['season']
-    episode = request.form['episode']
-    return render_template( 'template.html', xxx = findEpisode( season, episode))
+    season = 1
+    episode = 1
+    # season = request.form['season']
+    # episode = request.form['episode']
+    return render_template( 'template.html', xxx = findEpisode(season, episode))
 
 if __name__ == "__main__":
     app.debug = True # this automatically reloads any changes
