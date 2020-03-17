@@ -45,10 +45,10 @@ def hello_world():
 
 @app.route('/bigbang')
 def bigbang():
-    season = 1
-    episode = 1
-    # season = request.form['season']
-    # episode = request.form['episode']
+    season = request.form['season']
+    print(season)
+    episode = request.form['episode']
+    print(episode)
     return render_template( 'template.html', xxx = findEpisode(season, episode))
 
 if __name__ == "__main__":
