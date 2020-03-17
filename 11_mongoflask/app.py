@@ -50,7 +50,7 @@ def bigbang():
     print(season)
     episode = request.args.get('episode')
     print(episode)
-    print(findEpisode(1,1))
+    print(findEpisode(season,episode))
     return render_template( 'template.html', xxx = findEpisode(season, episode))
 
 if __name__ == "__main__":
