@@ -48,7 +48,7 @@ def bigbang():
     print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     season = request.args.get('season')
     print(season)
-    episode = request.form['episode']
+    episode = request.args.get('episode')
     print(episode)
     return render_template( 'template.html', xxx = findEpisode(season, episode))
 
