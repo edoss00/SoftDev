@@ -39,9 +39,13 @@ def findEpisode(season, number):
 
 # ------------------------ flaskin ----------------------------
 
-@app.route( '/')
+@app.route('/')
 def hello_world():
-    return render_template( 'template.html', xxx = findEpisode( 1, 1))
+    return render_template( 'home.html')
+
+@app.route('/bigbang')
+def bigbang():
+    return render_template( 'template.html', xxx = findEpisode( season, episode))
 
 if __name__ == "__main__":
     app.debug = True # this automatically reloads any changes
