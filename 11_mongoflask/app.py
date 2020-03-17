@@ -23,13 +23,11 @@ with open( 'data.json', 'r') as file:
                 db.episodes.insert_one( y)
 
 def findEpisode(season, number):
-  ep_list = [season, number]
   '''Episode name from the specified season and episode number.'''
   results = db.episodes.find({ "season": season, "number": number })
   #formatting printed results
   eplist = ["Season: {}  Episode: {}".format(season, number)]
-  print("Results Found: {}".format(results.count()))
-  print()
+  eplist.append("Results Found: {}".format(results.count()))
   for x in results:
     print("Episode Title: {}".format(x["name"]))
     if(x["summary"] == "" or x["summary"] is None):
