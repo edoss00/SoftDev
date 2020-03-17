@@ -23,10 +23,11 @@ with open( 'data.json', 'r') as file:
                 db.episodes.insert_one( y)
 
 def findEpisode(season, number):
+  ep_list = [season, number]
   '''Episode name from the specified season and episode number.'''
   results = db.episodes.find({ "season": season, "number": number })
   #formatting printed results
-  print("Season: {}  Episode: {}".format(season, number))
+  eplist = ["Season: {}  Episode: {}".format(season, number)]
   print("Results Found: {}".format(results.count()))
   print()
   for x in results:
@@ -35,6 +36,7 @@ def findEpisode(season, number):
       print("No summary available.")
     else:
       print(x["summary"][3:-4] + "\n")
+  return eplist
 
 
 # ------------------------ flaskin ----------------------------
