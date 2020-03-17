@@ -47,7 +47,7 @@ def hello_world():
 def bigbang():
     if request.method == 'POST':
         print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        season = request.form['season']
+        season = request.get('season')
         print(season)
         episode = request.form['episode']
         print(episode)
