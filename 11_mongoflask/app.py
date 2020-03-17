@@ -45,16 +45,13 @@ def hello_world():
 
 @app.route('/bigbang')
 def bigbang():
-    if request.method == 'POST':
-        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        season = request.get('season')
-        print(season)
-        episode = request.form['episode']
-        print(episode)
-        return render_template( 'template.html', xxx = findEpisode(season, episode))
-    else:
-           return render_template('home.html')
-
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    season = request.get('season')
+    print(season)
+    episode = request.form['episode']
+    print(episode)
+    return render_template( 'template.html', xxx = findEpisode(season, episode))
+    
 if __name__ == "__main__":
     app.debug = True # this automatically reloads any changes
     app.run(host='0.0.0.0') # this runs the website
