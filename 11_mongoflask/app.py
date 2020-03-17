@@ -45,6 +45,11 @@ def hello_world():
 
 @app.route('/bigbang')
 def bigbang():
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    season = request.form['season']
+    print(season)
+    episode = request.form['episode']
+    print(episode)
     return render_template( 'template.html', xxx = findEpisode(season, episode))
 
 if __name__ == "__main__":
