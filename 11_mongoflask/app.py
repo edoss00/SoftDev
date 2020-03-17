@@ -50,7 +50,7 @@ def bigbang():
     print(season)
     episode = request.form['episode']
     print(episode)
-    return render_template( 'template.html', xxx = findEpisode(season, episode))
+    #return render_template( 'template.html', xxx = findEpisode(season, episode))
 
 if __name__ == "__main__":
     app.debug = True # this automatically reloads any changes
