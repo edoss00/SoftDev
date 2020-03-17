@@ -46,9 +46,9 @@ def hello_world():
 @app.route('/bigbang')
 def bigbang():
     print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-    season = request.args.get('season')
+    season = int(request.args.get('season'))
     print(season)
-    episode = request.args.get('episode')
+    episode = int(request.args.get('episode'))
     print(episode)
     print(findEpisode(season,episode))
     return render_template( 'template.html', xxx = findEpisode(season, episode))
