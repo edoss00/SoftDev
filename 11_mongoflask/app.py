@@ -41,10 +41,12 @@ def findEpisode(season, number):
 
 @app.route('/')
 def hello_world():
-    return render_template( 'home.html')
+    return render_template('home.html')
 
 @app.route('/bigbang')
 def bigbang():
+    season = request.form['season']
+    episode = request.form['episode']
     return render_template( 'template.html', xxx = findEpisode( season, episode))
 
 if __name__ == "__main__":
