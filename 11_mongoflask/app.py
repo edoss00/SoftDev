@@ -45,6 +45,7 @@ def hello_world():
 
 @app.route('/bigbang')
 def bigbang():
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     season = request.form['season']
     print(season)
     episode = request.form['episode']
