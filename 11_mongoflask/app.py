@@ -29,11 +29,11 @@ def findEpisode(season, number):
   eplist = ["Season: {}  Episode: {}".format(season, number)]
   eplist.append("Results Found: {}".format(results.count()))
   for x in results:
-    print("Episode Title: {}".format(x["name"]))
+    eplist.append("Episode Title: {}".format(x["name"]))
     if(x["summary"] == "" or x["summary"] is None):
-      print("No summary available.")
+      eplist.append("No summary available.")
     else:
-      print(x["summary"][3:-4] + "\n")
+      eplist.append(x["summary"][3:-4] + "\n")
   return eplist
 
 
