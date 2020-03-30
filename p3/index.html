@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fe2O3 Tutorial</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>RUST TUTORIAL</h1>
+      <h6>TedXSoftDev</h6>
+      <h4>Amanda Chen & Elizabeth Doss</h4>
+      <img src="img/ferris.png" alt="Ferris" width="200">
+    </div>
+    <div class="container">
+      <h2>WHAT IS RUST?</h2>
+      <p>Rust is a programming language focused on <b>safety</b>, <b>control of memory layout</b>, and <b>concurrency</b>.
+      <p>It is syntactically similar to C and C++, but designed to provide better memory safety while maintaining high performance.
+      <h5>Safety & Memory Layout</h5>
+      <p> Rust's compiler allocates memory and manages it so objects are manageed from beginning to end.
+      <h5>Concurrency</h5>
+      <font size="2" color="gray">Definition: The ability of different parts of a program, algorithm, or problem to be executed out-of-order or in partial order, without affecting the final outcome.</font><p>
+      <p>Rust is able to run multiple concurrent units in a program to improve overall speed of processes.
+      <hr>
+      <h2>A BRIEF HISTORY</h2>
+      <p>Rust first started as a personal project begun in 2006 by a Mozilla employee. It was eventually sponsored by Mozilla in 2009.
+      <p>The first stable release of Rust 1.0 was in 2015. New stable point releases are launched every six weeks usually with significant changes with each version.
+      <p>People enjoy coding in Rust and it was even ranked the third-most-loved programming language in the 2015 Stack Overflow annual survey and received first place in 2016–2019.
+      <hr>
+      <h2>WHY RUST?</h2>
+      <h3><i>SAFETY! MEMORY! CONCURRENCY!</i></h3>
+      <ol>
+            <li>The developer doesn’t have to manage memory like in C or C++ programs.<ul>
+              <li>The proper amount of memory is allocated so when its job is done, the object will automatically be deallocated by the system. This means a programmer does not have to manually unreserve the memory used by that object.</li>
+              <li>It’s almost  impossible to accidentally access a memory location that is out of bounds.</li>
+            </ul></li>
+            <li>Unmanaged code is often harder to write and more vulnerable to threats.<ul>
+              <li> Buffer overflows, for example, are a type of threat where a user can enter more information than can be contained within the program’s allotted memory space, potentially allowing for the modification of memory in parts of the system not under direct control of the code. Rust’s capabilities prevent these type of threats.</li>
+            </ul></li>
+            <li>Rust’s compiler checks every variable you use and every memory address you reference.<ul>
+              <li>In dangerous programs, you’d be fighting the compiler, since almost every operation you try would cause memory safety issues.</li>
+              <li>The compiler solves all issues at compile time eliminating the need for a garbage collector that would slow down a program.</li>
+            </ul></li>
+      </ol>
+      <div class="container">
+        <div class="row">
+            <div class="col-md"><b>Pros</b>
+            <p><br>- Sloppy code is difficult to write because of Rust's check on memory allocation which doubles as a safety check for potential threats.
+            <p>- If you manage to appease the compiler, your code will likely work.</div>
+            <div class="col-md"><b>Cons</b>
+            <p><br>- The compile messages are helpful but can be tedious.
+            <p>- Rust is still a new language so some of its libraries are incomplete. </div>
+        </div>
+      </div>
+      <hr>
+      <h2>INSTALLING RUST</h2>
+      <p>You can Rust through rustup, a command line tool for managing Rust versions and associated tools.
+      <p>In Terminal (For Linux and Mac):
+      <pre>
+        $ curl https://sh.rustup.rs -sSf | sh
+          Rust is installed now. Great!
+      </pre>
+      <hr>
+      <h2>HELLO WORLD!</h2>
+      <p> Simplest Rust program:
+      <pre>
+        fn main() {
+        1234// Note that Rust indents with four spaces
+
+        println!("Hello, world!");
+        // The ! means that you are calling a macro
+        // instead of a normal function
+        }
+
+        $ rustc main.rs  //similar to gcc in C
+        $ ./main   //binary executable
+
+        Hello, world!
+      </pre>
+      <hr>
+      <h2>CREATING A PROJECT WITH CARGO</h2>
+      <p>Cargo is Rust’s build system and package manager.
+      <p>Cargo is used to manage Rust projects because it handles a lot of
+        tasks, such as building code, downloading the libraries the code needs
+        (dependencies), and building those libraries.
+      <pre>
+        $ cargo new hello_cargo
+        $ cd hello_cargo
+      </pre>
+      <p>The first command creates a new directory called hello_cargo.
+        The project is named hello_cargo, and Cargo creates its files in a directory of the same name.
+      <p>Cargo will automatically generated two files and one directory: a Cargo.toml file and a src directory with a main.rs file inside.
+      <p>Filename: Cargo.toml (<a href="https://groups.google.com/a/stuy.edu/d/msg/softdev19-20/EDy-PGa6LRg/BROff_V5AgAJ">Tom’s Obvious, Minimal Language</a>)
+      <pre>
+        [package]
+        name = "hello_cargo"
+        version = "0.1.0"
+        authors = ["Your Name <you@example.com>"]
+        edition = "2018"
+
+        [dependencies]
+      </pre>
+      <p> Filename: src/main.rs
+      <pre>
+        fn main() {
+          println!("Hello, world!");
+        }
+      </pre>
+      <p>Cargo expects source files to live inside the src directory. The top-level project directory is just for README files, license information, configuration files, and anything else not related to your code. Using Cargo helps you organize your projects.
+      <hr>
+      <h2>BUILDING AND RUNNING A CARGO PROJECT</h2>
+      <p> The <b>cargo build</b> command creates an executable file in target/debug/hello_cargo rather than in your current directory.
+      <pre>
+        $ cargo build
+          Compiling hello_cargo v0.1.0 (file:///projects/hello_cargo)
+            Finished dev [unoptimized + debuginfo] target(s) in 2.85 secs
+      </pre>
+      <p>You can run the executable with:
+      <pre>
+        $ ./target/debug/hello_cargo #
+        Hello, world!
+      </pre>
+      <p>You can also use <b>cargo run</b> to compile the code and then run the resulting executable all in one command:
+      <pre>
+        $ cargo run
+          Compiling hello_cargo v0.1.0 (file:///projects/hello_cargo)
+            Finished dev [unoptimized + debuginfo] target(s) in 0.33 secs
+              Running `target/debug/hello_cargo`
+          Hello, world!
+      </pre>
+      <p>Cargo also provides a command called cargo check. This command quickly checks your code to make sure it compiles but doesn’t produce an executable:
+      <pre>
+        $ cargo check
+          Checking hello_cargo v0.1.0 (file:///projects/hello_cargo)
+            Finished dev [unoptimized + debuginfo] target(s) in 0.32 secs
+      </pre>
+      <p>Often, cargo check is much faster than cargo build, because it skips the step of producing an executable. If you’re continually checking your work while writing the code, using cargo check will speed up the process.
+      <hr>
+      <h2>DEMO</h2>
+      <p>Let's try making a simple guessing game program!
+      <p>You can test out the program <a href="https://repl.it/@achen27/RUST-DEMO">here</a>.
+      <p>Step-by-step explaination: <a href="https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html">rust-lang.org</a>
+      <hr>
+      <h2>RESOURCES</h2>
+        <p>- <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a>
+        <p>- <a href="https://thenewstack.io/safer-future-rust/">How Rust Compares to Other Programming Languages</a>
+        <p>- <a href="https://hackernoon.com/programming-in-rust-the-good-the-bad-the-ugly-d06f8d8b7738">Programming in Rust: the good, the bad, the ugly</a>
+      <hr>
+      <footer>
+          <div class="row">
+              <div class="col-md-6">
+                  <p>Copyright &copy; 2020 The Riftbreakers</p>
+              </div>
+          </div>
+      </footer>
+      </div>
+  </body>
+ </html>
