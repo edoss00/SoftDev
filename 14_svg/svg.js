@@ -5,7 +5,9 @@
 
 var pic = document.getElementById("vimage");
 var btn = document.getElementById("clear");
+var mov = document.getElementById("mov");
 var stop = document.getElementById("stopbtn");
+var color = document.getElementById("rainbowfy")
 
 var dx = 1;
 var dy = 1;
@@ -75,7 +77,18 @@ var cancel = function(e){
   window.cancelAnimationFrame(ani);
 }
 
+var rainbow = function(e){
+  for (i = 0; i < pic.children.length; i++){
+    child = pic.children[i];
+    var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+    console.log(randomColor);
+    child.setAttribute("fill", randomColor);
+  }
+
+}
+
 btn.addEventListener('click', clear);
 pic.addEventListener('click', draw);
 mov.addEventListener('click', move);
 stop.addEventListener('click', cancel);
+color.addEventListener('click', rainbow);
