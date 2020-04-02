@@ -1,0 +1,24 @@
+Demo #1
+The page will display a table with 3 rows and 2 columns of Star Wars characters.
+Clicking on each cell will create an alert that displays the name in that cell.
+
+Demo #2
+The page will display a table with 3 rows and 2 columns of Star Wars characters.
+Clicking on each cell will create an alert that displays the name in that cell.
+Then, an alert will display the contents of the row.*
+Then, an alert will display the contents of the whole table.*
+
+* Observation not predicted: In these two alerts the tags are also shown of the
+row and table respectively.
+
+Demo #3
+The page will display a table with 3 rows and 2 columns of Star Wars characters.
+True parameter is changed in table.addEventListener so order will change to show
+table then name then row.
+The stopPropagation function stops the sequence of alerts after the first one.
+
+Demo #4
+The page will display a table with 3 rows and 2 columns of Star Wars characters.
+The alerts show the table first, then the row, then the name.
+The stopPropagation function stops the sequence of alerts after the first one.
+The orders the event listeners are attached does not matter.
