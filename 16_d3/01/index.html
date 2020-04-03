@@ -6,9 +6,9 @@
     ...but will yield only blank page at first.
   -->
 <!--
-Clyde "Thluffy" Sinclair
-SoftDev2 pd0
-2099-12-31
+Elizabeth Doss
+SoftDev2 pd1
+2020-04-03
 -->
 
 <style>
@@ -63,10 +63,15 @@ All widths are hard-coded by the programmer and each value displayed on the bar.
 
 01/index.html
 1. Introduces arrary data which contains all the widths / 10. Returns undefined.
+Data: returns array of data
 2. Chart is selected for. Returns undefined.
+Chart: returns object with _groups and _parents
 3. Selects each element in the chart to prep for insertion of data. Returns undefined.
+Bar: returns object with Array(1) -> NodeList(0) in _groups and html -> div.chart in _parents.
 4. Binds each of the six values in the array to the chart. Returns undefined.
+BarUpdate: Returns object with _enter added with an array of our values and _exit with an empty array
 5. Creates same number of bars as values in the chart. Equal length, fills screen.
    Returns undefined.
+BarUpdate: Retuns same as above
 6. Changes length of bars to value in chart * 10. Returns an object with groups and parents.
 7. Adds inner HTML to display data from the chart. Returns an object with groups and parents. -->
