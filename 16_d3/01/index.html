@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--D3 demo: hardcoded bars removed, to be generated fr data-->
+<!--
+    Can yield a horizontal bar chart if properly bound to data
+    (steelblue bars, white number overlays)
+    ...but will yield only blank page at first.
+  -->
+<!--
+Clyde "Thluffy" Sinclair
+SoftDev2 pd0
+2099-12-31
+-->
+
+<style>
+  .chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+  }
+</style>
+
+<div class="chart">
+</div>
+
+<script src="http://d3js.org/d3.v5.min.js"
+	charset="utf-8"></script>
+
+<!--------------------------------
+    Entering the following commands via console will
+    incrementally re-create your hardcoded chart...
+
+    //Init your data:
+    var data = [4, 8, 15, 16, 23, 42];
+
+    //Select your chart.
+    var chart = d3.select(".chart");
+
+    //Prepare for data join.
+    var bar = chart.selectAll("div");
+
+    (this defines selection to which you will join data)
+
+    //Join your data.
+    var barUpdate = bar.data(data);
+
+    //Instantiate new elements by appending to the “enter selection.”
+    var barEnter = barUpdate.enter().append("div");
+
+    //Set width of each bar proportional to its data value.
+    barEnter.style("width", function(d) {
+    return d * 10 + "px"; });
+
+    //Label each bar.
+    barEnter.text(function(d) { return d; });
+  -------------------------------->
+
+<!-- 00/index.html
+Yields a screen with everything directly displayed.
+All widths are hard-coded by the programmer and each value displayed on the bar.
+
+01/index.html
+1. Introduces arrary data which contains all the widths / 10. Returns undefined.
+2. Chart is selected for. Returns undefined.
+3. Selects each element in the chart to prep for insertion of data. Returns undefined.
+4. Binds each of the six values in the array to the chart. Returns undefined.
+5. Creates same number of bars as values in the chart. Equal length, fills screen.
+   Returns undefined.
+6. Changes length of bars to value in chart * 10. Returns an object with groups and parents.
+7. Adds inner HTML to display data from the chart. Returns an object with groups and parents. -->
