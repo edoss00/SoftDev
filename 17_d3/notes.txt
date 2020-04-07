@@ -1,0 +1,12 @@
+Learn D3: By Example Notes
+https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3
+
+-Easier to use something someone else already made and change it to fit what you
+need than to start from scratch
+-[d3.min(values), d3.median(values), d3.max(values)]
+    -find values in an array of numbers
+-importing an example chart:
+    -import {chart as chart1} with {values as data} from "@d3/histogram"
+-able to customize imports
+    -ex. change height (height = 200)
+    -import {chart as chart2} with {values as data, height} from "@d3/histogram"
