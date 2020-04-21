@@ -1,30 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-</head>
-
-<style>
-.line {
-    fill: none;
-    stroke: #2f00ff;
-    stroke-width: 2;
-}
-
-.dot {
-    fill: #2f00ff;
-    stroke: #fff;
-}
-</style>
-
-<body>
-<h1>This is a test! We need to actually put proper values for y</h1>
-<button> Render (no work)</button>
-<button> Transition (no work)</button>
-</body>
-
-<script src="http://d3js.org/d3.v5.min.js"></script>
-<script>
 // Creates proper margins to fit in window
 var margin = {top: 50, right: 50, bottom: 50, left: 50}
   , width = window.innerWidth - margin.left - margin.right-20 // Use the window's width
@@ -92,5 +65,3 @@ svg.selectAll(".dot")
     .attr("cx", function(d, i) { return xScale(i+s) })
     .attr("cy", function(d) { return yScale(d.y) })
     .attr("r", 5);
-</script>
-</html>

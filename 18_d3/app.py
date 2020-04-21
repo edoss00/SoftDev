@@ -5,18 +5,18 @@ app = Flask(__name__)
 # parses json file
 def cleaner():
     data = []
-    list = []
+    valList = []
     with open('static/gdp.json', 'r') as file:
         data = json.loads(file.read())[1]
         for i in range(len(data)):
-            list.append({'date': data[i]['date'], 'value': data[i]['value']})
-    return list
+            valList.append(float(data[i]['value']))
+    return valList
 
 # flask
 @app.route("/")
 def helloworld():
-    print(__name__)
     clean = cleaner()
+    #print(clean)
     return render_template('index.html', clean = clean)
 
 if __name__ == "__main__":
