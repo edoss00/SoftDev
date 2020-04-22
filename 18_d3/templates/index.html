@@ -1,3 +1,8 @@
+<!-- Amanda "Amber" Chen, Elizabeth Doss (Team The Riftbreakers)
+     SoftDev2 pd1
+     K18 - Come Up For Air
+     2020-04-20 -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,79 +23,20 @@
 </style>
 
 <body>
-<h1>This is a test! We need to actually put proper values for y</h1>
-<button> Render (no work)</button>
-<button> Transition (no work)</button>
+  <h1>CHANGE IN USA GDP: 1960-2015</h1>
+  <p>
+    This dataset shows the change in value of the GDP of the US from 1960 to 2015. <br>
+    Click Render to show a line graph of USA's GDP from 1960 to 1973.<br>
+    Click Transition to show the next fourteen years.
+  </p>
+  <button id="render"> Render </button>
+  <button id="transition"> Transition </button>
+  <div id="linegraph"></div>
+  <script src="http://d3js.org/d3.v5.min.js"></script>
+  <script type="text/javascript">
+    var gdp = {{ gdp|tojson }}
+    // console.log({{gdp|tojson}})
+  </script>
+  <script src="{{ url_for('static', filename='d3.js')}}"></script>
 </body>
-
-<script src="http://d3js.org/d3.v5.min.js"></script>
-<script>
-// Creates proper margins to fit in window
-var margin = {top: 50, right: 50, bottom: 50, left: 50}
-  , width = window.innerWidth - margin.left - margin.right-20 // Use the window's width
-  , height = window.innerHeight - margin.top - margin.bottom - 150; // Use the window's height - int to accomodate header
-
-// Number of datapoints
-var n = 8;
-// Start value x
-var s = 50 //temp
-
-// Creates proper x and y scale for axis
-var xScale = d3.scaleLinear()
-    .domain([s,s+n]) // x axis only contains the points we will observe
-    .range([0, width]);
-
-var yScale = d3.scaleLinear()
-    .domain([0, 25]) // 25 trillion is a reasonable value to use as maximum GDP
-    .range([height, 0]);
-
-// Create a line with the datapoints
-var line = d3.line()
-    .x(function(d, i) { return xScale(i+s); }) // x values of line
-    .y(function(d) { return yScale(d.y); }) // y values of line
-
-
-
-
-
-//NEEDS TO BE UPDATED FOR OUR DATAAAAAAAAAAAAAAAAAAAAAA
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(0,25)() } })
-
-
-
-
-
-// Add SVG to the page with proper margins
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// Call the x and y axis in group tags
-svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale)); // Create an axis component on bottom
-
-svg.append("g")
-    .attr("class", "y axis")
-    .call(d3.axisLeft(yScale)); // Create an axis component on left
-
-// Append path, bind the data, and call line generator
-svg.append("path")
-    .datum(dataset) // Binds data to the line
-    .attr("class", "line")
-    .attr("d", line); // Calls the line generator
-
-// Creates a circle for each datapoint
-svg.selectAll(".dot")
-    .data(dataset)
-  .enter().append("circle")
-    .attr("class", "dot")
-    .attr("cx", function(d, i) { return xScale(i+s) })
-    .attr("cy", function(d) { return yScale(d.y) })
-    .attr("r", 5);
-</script>
 </html>
